@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: link_assignment_dev
+  username: testdev
+  password: testdev
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: locahost
+  database: link_assignment_uat
+  username: testuat
+  password: testuat
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: link_assignment
+  username: testprod
+  password: testprod
