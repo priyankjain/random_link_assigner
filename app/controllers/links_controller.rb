@@ -1,6 +1,10 @@
 class LinksController < ApplicationController
   before_action :require_login
 
+  def show
+  	@link = Link.find_by_user_id(session[:user_id])  		
+  end
+
   private
   def require_login
     if current_user.nil?
@@ -8,7 +12,5 @@ class LinksController < ApplicationController
       redirect_to "/login"
     end
   end
-  def show
-    render "show"
-  end
+
 end

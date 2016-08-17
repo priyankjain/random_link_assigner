@@ -1,7 +1,8 @@
 <h1>Your random link</h1>
 <p>
-    <% if !@link.nil? %>
-        Your random url is <a href='<%= @link.first.url %>'><%= @link.first.url %></a>
+	<%= @num %>
+    <% if !@link.blank? %>    	
+        Your random url is <a href='<%= @link.url %>'><%= @link.url %></a>
     <% else %>
         Sorry, you have not been assigned a link yet. Don't worry, we'll get one for you soon
     <% end %>
