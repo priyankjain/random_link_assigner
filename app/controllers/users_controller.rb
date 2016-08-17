@@ -11,13 +11,12 @@ class UsersController < ApplicationController
     	available_link = Link.get_available_link  
     	@link_assigned = false  	
     	if available_link # Go ahead and assign the link to the user in case of availability, else skip
-    		@link_assigned = true
+    		link_assigned = true
     		available_link.user_id = @user.id
     		available_link.save
-    		# TO-DO: Code to notify of link assignment
     	end 
     	#Continue with registration irrespective of whether a random link was available or not    	
-    	UserMailer.welcome_email(@user, @link_assigned).deliver_now
+    	UserMailer.welcome_email(@user, link_assigned).deliver_now
         redirect_to "/login", :notice => 'Registered successfully!'
     else
         render "new"
