@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'rename'
 gem 'rails_12factor', group: :production
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
