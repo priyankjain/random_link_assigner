@@ -5,19 +5,15 @@ class SessionsController < ApplicationController
   def index
     redirect_to '/login'
   end
-  
+
   def create
-    if !current_user.nil?
-        redirect_to "/home"
+    user = User.authenticate(params[:email], params[:password])
+    if user
+        session[:user_id] = user.id
+        redirect_to '/home', :notice => "Successfully logged in"
     else
-        user = User.authenticate(params[:email], params[:password])
-        if user
-            session[:user_id] = user.id
-            redirect_to '/home', :notice => "Successfully logged in"
-        else
-            flash.now.alert = "Invalid credentials"
-            render "new"
-        end
+        flash.now.alert = "Invalid credentials"
+        render "new"
     end
   end
     

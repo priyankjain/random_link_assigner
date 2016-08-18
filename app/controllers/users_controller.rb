@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
   def require_logout
     if !current_user.nil?
-        redirect_to "/login"
+        redirect_to "/home"
     else
         nil
     end
