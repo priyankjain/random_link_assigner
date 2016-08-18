@@ -2,6 +2,10 @@ class SessionsController < ApplicationController
   def new
   end
 
+  def index
+    redirect_to '/login'
+  end
+  
   def create
     if !current_user.nil?
         redirect_to "/home"

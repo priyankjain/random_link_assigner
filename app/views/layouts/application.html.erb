@@ -1,26 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Auth</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Link Assigner</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="user_nav">
-    <% if current_user %>
-        Logged in as <%= current_user.name %>
-        <%= link_to "Logout", logout_path %>
-    <% else %>
-        <%= link_to "Register", register_path %> or
-        <%= link_to "Login", login_path %>
-    <% end %>
+<div id="header-container" class="row">
+		<div class="row">
+			<div class="col-xs-1">&nbsp;</div>
+			<div class="col-xs-6 white-text title">&nbsp;Random Link Assigner
+			</div>		
+			<div class="col-xs-1">&nbsp;</div>
+		    <% if current_user %>
+		        <div class="col-xs-4"><span class='white-text'>Hello, <em><%= current_user.name %></em>!</span>&nbsp;&nbsp;
+		        <%= link_to "Logout", logout_path, class: 'black' %></div>
+		    <% else %>
+		        <div class="col-xs-4"><%= link_to "Register", register_path, class: 'black' %>
+		        <span class='white-text'>&nbsp;or&nbsp;</span><%= link_to "Login", login_path, class: 'black' %></div>
+		    <% end %>
+		    </div>
+	    </div>
+    </div>
+<div class="container">	
+	<div id="main-container" class="container-fluid">
+		
+	    <div id="alert-container" class="row">
+			<% flash.each do |name, msg| %>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+				 	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<%= content_tag :div, msg, :id => "flash_#{name}" %>  
+				</div>    
+			<% end %>
+		</div>
+		<div id="content-container" class="row">
+			<%= yield %>
+		</div>
+	</div>
 </div>
-<% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
-<%= yield %>
-
 </body>
 </html>

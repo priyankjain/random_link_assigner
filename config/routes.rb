@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', :as => 'login'
   get 'logout' => 'sessions#destroy', :as => 'logout'
   get 'register' => 'users#new', :as => 'register'
-  resource :users
+  root :to => 'sessions#new'
+  resources :users
   resources :sessions
 end

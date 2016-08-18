@@ -1,9 +1,17 @@
-<h1>Your random link</h1>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Your random link
+	</div>
+  	<div class="panel-body">
+  		<% if !@link.blank? %>    	
+	        Your random url is <a href='<%= @link.url %>' target="_blank"><%= @link.url %></a>
+	    <% else %>
+	        Sorry, you have not been assigned a link yet. Don't worry, we'll get one for you soon
+    	<% end %>
+  	</div>
+</div>
+
+<h3></h3>
 <p>
-	<%= @num %>
-    <% if !@link.blank? %>    	
-        Your random url is <a href='<%= @link.url %>'><%= @link.url %></a>
-    <% else %>
-        Sorry, you have not been assigned a link yet. Don't worry, we'll get one for you soon
-    <% end %>
+    
 </p>
